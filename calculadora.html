@@ -36,9 +36,23 @@ table{
 
 <script>
 var cifra=""
+
+var acumulado=0;
+
     function display_numeros(numero){
         document.getElementById("display").value=cifra + numero;
         cifra=document.getElementById("display").value //reasignando el valor de cifra para que guarde y lo siga concatenando con siguiente numero
+    }
+
+    function suma(){
+
+        //almacena el valor almacenado en cifra y lo suma a cada pulsacion del signo +
+        acumulado=acumulado+parseInt(cifra);
+
+        document.getElementById("display").value=acumulado;
+
+        cifra="";
+
     }
 /*  var repetir="si";
 
@@ -101,7 +115,7 @@ do {
             </td>
         </tr>
         <tr>
-            <td width="25%"><input name="button" type="button" class="numero" id="button" value="+" onclick="display_numeros(+)"></td>
+            <td width="25%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
             <td width="25%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="display_numeros(-)"></td>
             <td width="25%"><input name="button3" type="button" class="numero" id="button3" value="*" onclick="display_numeros(*)"></td>
             <td width="25%"><input name="button4" type="button" class="numero" id="button4" value="/" onclick="display_numeros(/)"></td>
@@ -130,5 +144,11 @@ do {
             <td colspan="2"><input name="button12" type="button" class="igual" id="button12" value="." onclick="display_numeros(.)"></td>
         </tr>
     </table>
+
+<script>
+
+document.getElementById("display").value=0;
+
+</script>
 </body>
 </html>
