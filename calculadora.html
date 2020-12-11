@@ -9,6 +9,8 @@
 
 <script>
 
+var repetir="si";
+
 function suma (num1, num2){
     alert ("La suma es: " + (num1+num2));
 }
@@ -24,6 +26,37 @@ function multiplicacion (num1, num2){
 function division (num1, num2){
     alert ("La division es: " + (num1/num2));
 }
+
+do {
+    var operacion=prompt("Que operacion deseas hacer papu?");
+
+    var operacion1=parseInt(prompt("Introduce el primer numero"));
+
+    var operacion2=parseInt(prompt("Introduce el segundo numero"));
+
+    if (operacion=="sumar"){
+        suma(operacion1, operacion2);
+    }
+
+    else if (operacion=="restar"){
+        resta(operacion1, operacion2);
+    }
+
+    else if (operacion=="multiplicar"){
+        multiplicacion(operacion1, operacion2);
+    }
+
+    else if(operacion=="dividir"){
+        division(operacion1, operacion2);
+    }
+
+    else {
+        alert("Operacion no contemplada");
+    }
+
+    repetir=prompt("Deseas repetir papu?").toLowerCase();
+
+} while (repetir=="si");
 
 </script>
 
