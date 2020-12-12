@@ -35,9 +35,13 @@ table{
 <!--------------CREAR FUNCIONES POR CADA OPERACION MATEMATICA--------->
 
 <script>
-var cifra=""
+var cifra="";
 
 var acumulado=0;
+
+var sumar=false;
+
+var restar=false;
 
     function display_numeros(numero){
         document.getElementById("display").value=cifra + numero;
@@ -53,6 +57,42 @@ var acumulado=0;
 
         cifra="";
 
+        sumar=true;
+
+        restar=false;
+
+    }
+
+
+    function resta(){
+//si la ultima operacion fue una suma entonces se suma la ultima cifra con el acumulado al darle igual
+        if(sumar){
+            acumulado=acumulado+parseInt(cifra);
+            document.getElementById("display").value=acumulado;
+        }
+
+        //si lo ultimo que hemos hecho NO es sumar entonces: restar lo que hay en el display con el acumulado
+        else{
+            acumulado=acumulado-parseInt(cifra);
+            document.getElementById("display").value=acumulado;
+     
+        }
+
+        cifra="";
+        sumar=false;
+        restar=true;
+    }
+
+    function resultado(){
+
+        if(sumar){
+            document.getElementById("display").value=acumulado+parseInt(cifra);
+        }
+
+        else if (restar){
+            document.getElementById("display").value=acumulado-parseInt(cifra);
+  
+        }
     }
 /*  var repetir="si";
 
@@ -116,7 +156,7 @@ do {
         </tr>
         <tr>
             <td width="25%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
-            <td width="25%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="display_numeros(-)"></td>
+            <td width="25%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="resta()"></td>
             <td width="25%"><input name="button3" type="button" class="numero" id="button3" value="*" onclick="display_numeros(*)"></td>
             <td width="25%"><input name="button4" type="button" class="numero" id="button4" value="/" onclick="display_numeros(/)"></td>
         </tr>
@@ -141,7 +181,7 @@ do {
         <tr>
             <td><input name="num0" type="button" class="numero" id="num0" value="0" onclick="display_numeros(0)"></td>
             <td><input name="button17" type="button" class="numero" id="button17" value="," onclick="display_numeros(,)"></td>
-            <td colspan="2"><input name="button12" type="button" class="igual" id="button12" value="." onclick="display_numeros(.)"></td>
+            <td colspan="2"><input name="button12" type="button" class="igual" id="button12" value="=" onclick="resultado()"></td>
         </tr>
     </table>
 
